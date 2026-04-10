@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sportsbetting-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python main.py train
+    startCommand: python -m uvicorn api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ODDS_API_KEY
+        value: 5056aa7c9d19dccaec1d6930bf797af8
+      - key: SPORT
+        value: icehockey_nhl
+      - key: MIN_EDGE
+        value: "0.05"
+      - key: BANKROLL
+        value: "1000.0"
